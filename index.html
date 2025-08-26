@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>K-Pop Station - Inicio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        /* Estilos Generales */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #444;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Barra de Navegación */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            margin: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 1rem;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #a537ff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: #000000;
+            transition: color 0.3s ease, transform 0.3s ease;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+            transform: scale(1.1);
+        }
+
+        .nav-links .active a {
+            color: #ff6b6b;
+            font-weight: 700;
+            border-bottom: 2px solid #ff6b6b;
+            text-shadow: none;
+        }
+
+        /* Botón hamburguesa */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #000000;
+            border-radius: 2px;
+        }
+
+        /*--- Media Queries para responsividad ---*/
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 1rem 1.5rem;
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 0;
+                margin: 0;
+                border-radius: 0 0 15px 15px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 9999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        /* Sección Principal (Hero) */
+        .hero-section {
+            background: linear-gradient(to top, #000000, #42a5f5, #d81b60, #8e24aa);
+            color: #fff;
+            text-align: center;
+            padding: 8rem 2rem;
+            min-height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: #ff6b6b;
+            color: #fff;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #ff8a8a;
+        }
+
+        /* Artistas Destacados */
+        .featured-artists {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .artist-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            background-color: #f0f0f0;
+            display: block;
+        }
+
+        .card h3 {
+            margin: 1rem 0 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">K-Pop Station</a>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="mi_musica.html">Mi Música</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contactenos.html">Contactanos</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Tu Destino para Todo el K-Pop</h1>
+                <p>Descubre los últimos éxitos, artistas y noticias del fenómeno musical que está conquistando el mundo.</p>
+                <a href="mi_musica.html" class="cta-button">Escucha Mi Música</a>
+            </div>
+        </section>
+
+        <section class="featured-artists">
+            <h2>Artistas Destacados</h2>
+            <div class="artist-cards">
+                <div class="card">
+                    <img src="../asset/img/BTS.avif" alt="BTS" />
+                    <h3>BTS💜</h3>
+                    <p>El grupo que revolucionó la industria del K-Pop con su música y su mensaje.</p>
+                </div>
+                <div class="card">
+                    <img src="../asset/img/3213926.webp" alt="Stray Kids" />
+                    <h3>Stray Kids❤️</h3>
+                    <p>Conocidos por su sonido único y su potente presencia en el escenario.</p>
+                </div>
+                <div class="card">
+                    <img src="../asset/img/blackpink.jpg" alt="BLACKPINK" />
+                    <h3>BLACKPINK💖</h3>
+                    <p>Un cuarteto femenino global que rompe récords con cada lanzamiento.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 K-Pop Station. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const toggleButton = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        toggleButton.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        toggleButton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                navLinks.classList.toggle('active');
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
